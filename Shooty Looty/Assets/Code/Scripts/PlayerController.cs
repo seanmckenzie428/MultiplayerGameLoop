@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private void OnLook(InputValue turnValue)
     {
         Vector2 turnFloat = turnValue.Get<Vector2>();
-        transform.Rotate(0.0f, turnFloat.x, 0.0f);
+        transform.Rotate(0.0f, turnFloat.x * 10, 0.0f);
     }
     
     private void OnFire(InputValue fireValue)
