@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
     public GameObject bullet;
+    public GameObject coin;
     public float cooldownTime = 1f;
     
     private Rigidbody _rb;
@@ -59,5 +60,12 @@ public class PlayerController : MonoBehaviour
     public void AddScore(int score)
     {
         Debug.Log("Score: " + score);
+    }
+
+    public void DropCoin()
+    {
+        Vector3 spawnLocation = transform.position;
+        spawnLocation.y += 2;
+        Instantiate(coin, spawnLocation, Quaternion.identity);
     }
 }

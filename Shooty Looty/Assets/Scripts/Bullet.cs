@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerController.AddScore(1);
+            playerController.DropCoin();
             Despawn();
         }
     }
