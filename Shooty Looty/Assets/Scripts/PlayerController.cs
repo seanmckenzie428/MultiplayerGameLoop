@@ -15,11 +15,18 @@ public class PlayerController : MonoBehaviour
     
     private float _movementX; 
     private float _movementY;
-    private bool _isCoolingDown = false;
     void Start ()
     {
         _rb = GetComponent<Rigidbody>();
         _gun = transform.Find("Gun");
+    }
+    
+    void Update ()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void FixedUpdate()
@@ -42,19 +49,9 @@ public class PlayerController : MonoBehaviour
     
     private void OnFire(InputValue fireValue)
     {
-        Debug.Log("Fire!");
-        // if (!_isCoolingDown)
-        // {
-            var newBullet = Instantiate(bullet, _gun.position, _gun.rotation);
-            newBullet.GetComponent<Bullet>().playerController = this;
-            // _isCoolingDown = true;
-            // Invoke(nameof(ResetCooldown), cooldownTime);
-        // }
-    }
-    
-    private void ResetCooldown()
-    {
-        _isCoolingDown = false;
+        // Debug.Log("Fire!");
+        var newBullet = Instantiate(bullet, _gun.position, _gun.rotation);
+        newBullet.GetComponent<Bullet>().playerController = this;
     }
     
     public void AddScore(int score)
